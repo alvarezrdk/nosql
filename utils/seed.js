@@ -1,19 +1,16 @@
-const seedUsers = require('./seedUsers');
-const seedThoughts = require('./seedThoughts');
-const seedFriends = require('./seedFriends');
-const seedReactions = require('./seedReactions');
+const seedUser = require('./seedUser');
+const seedThought = require('./seedThought');
+const seedFriend = require('./seedFriend');
+const seedReaction = require('./seedReaction');
 
 const seedAll = async () => {
-  try {
-    await seedUsers();
-    await seedThoughts();
-    await seedFriends();
-    await seedReactions();
+  
+    await seedUser();
+    // await seedThought();
+    // await seedFriend();
+    // await seedReaction();
 
-    console.log('All seed data generated successfully');
-  } catch (error) {
-    console.error('Error seeding data:', error);
-  }
+  process.exit(0);
 };
 
 seedAll();

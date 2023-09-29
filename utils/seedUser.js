@@ -1,16 +1,24 @@
-const connection = require('../config/connection');
-const User = require('../models/User');
+const User = require("../models/User");
 
-const seedUsers = async () => {
-  try {
-    // Create users
-    const user1 = await User.create({ username: 'user1' });
-    const user2 = await User.create({ username: 'user2' });
+const seedusers = [
+      {
+        username: 'username1',
+        email: 'username1@nosql.com'
+      },
+      {
+        username: 'username2',
+        email: 'username2@nosql.com'
+      },
+      {
+        username: 'username3',
+        email: 'username3@nosql.com'
+      },
+      {
+        username: 'username4',
+        email: 'username4@nosql.com'
+      },
+    ];  
 
-    console.log('Users seeded successfully');
-  } catch (error) {
-    console.error('Error seeding users:', error);
-  }
-};
+    const seedUsers = () => User.bulkCreate(seedusers);
 
 module.exports = seedUsers;

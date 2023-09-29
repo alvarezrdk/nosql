@@ -1,28 +1,24 @@
-const connection = require('../config/connection');
-const User = require('../models/User');
 
-const seedFriends = async () => {
-  try {
-    const users = await User.find();
+const seedfriends = [
+  
+  {
+    thoughtText: 'This is a great day!',
+    username: 'username1',
+  },
+  {
+    thoughtText: 'Feeling excited about this...!!!',
+    username: 'username2',
+  },
+  {
+    thoughtText: 'That is a great idea...!!!',
+    username: 'username3',
+  },
+  {
+    thoughtText: 'I have a different opinion...',
+    username: 'username4',
+  },
+];
 
-    if (users.length >= 2) {
-      const user1 = users[0];
-      const user2 = users[1];
+const seedFriend = () => Product.bulkCreate(seedfriends);
 
-      user1.friends.push(user2._id);
-      user2.friends.push(user1._id);
-
-      await Promise.all([user1.save(), user2.save()]);
-
-      console.log('Friends seeded successfully');
-    } else {
-      console.error('Not enough users to create friends');
-    }
-  } catch (error) {
-    console.error('Error seeding friends:', error);
-  } finally {
-    connection.close();
-  }
-};
-
-seedFriends();
+module.exports = seedFriend;

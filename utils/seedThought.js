@@ -1,28 +1,26 @@
 const connection = require('../config/connection');
 const Thought = require('../models/Thought');
 
-const seedThoughts = async () => {
-  try {
-    const thoughts = [
+const seedthoughts = [
+  
       {
-        text: 'This is a great day!',
-        username: 'user1',
+        thoughtText: 'This is a great day!',
+        username: 'username1',
       },
       {
-        text: 'Feeling excited about the weekend!',
-        username: 'user2',
+        thoughtText: 'Feeling excited about this...!!!',
+        username: 'username2',
       },
-      // Add more thoughts as needed
+      {
+        thoughtText: 'That is a great idea...!!!',
+        username: 'username3',
+      },
+      {
+        thoughtText: 'I have a different opinion...',
+        username: 'username4',
+      },
     ];
 
-    await Thought.insertMany(thoughts);
+    const seedThought = () => Product.bulkCreate(seedthoughts);
 
-    console.log('Thoughts seeded successfully');
-  } catch (error) {
-    console.error('Error seeding thoughts:', error);
-  } finally {
-    connection.close();
-  }
-};
-
-seedThoughts();
+module.exports = seedThought;

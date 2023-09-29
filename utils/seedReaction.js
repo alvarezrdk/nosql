@@ -2,7 +2,7 @@ const connection = require('../config/connection');
 const Reaction = require('../models/Reaction');
 const Thought = require('../models/Thought');
 
-const seedReactions = async () => {
+const seedReaction = async () => {
   try {
     const thoughts = await Thought.find();
 
@@ -26,7 +26,7 @@ const seedReactions = async () => {
           username: 'username3',
           thoughtId: thought2._id,
         },
-        
+
       ];
 
       await Reaction.insertMany(reactions);
@@ -42,4 +42,4 @@ const seedReactions = async () => {
   }
 };
 
-seedReactions();
+module.exports = seedReaction;
