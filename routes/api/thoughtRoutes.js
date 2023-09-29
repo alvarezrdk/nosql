@@ -16,6 +16,7 @@ router.route("/").get(getAllThoughts).post(createThought);
 // GET a specific thought by ID
 router
   .route("/:id")
+  .post(createThought)
   .get(getThoughtById)
   .put(updateThought)
   .delete(deleteThought);

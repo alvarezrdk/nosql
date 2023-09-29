@@ -44,6 +44,8 @@ const userControllers = {
     }
   },
 
+  
+
   deleteUser: async (req, res) => {
     try {
       const deletedUser = await User.findByIdAndDelete(req.params.id);
@@ -84,7 +86,23 @@ const userControllers = {
     } catch (error) {
       res.status(400).json({ error: 'Could not remove friend' });
     }
-  }
+  },
+
+  createThought: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { thoughts: req.body } }
+      );
+
+      if (!user) {
+        return res.status(404).json({ error: "User not found" });
+      }
+      return res.status(200).json({ message: "User Thought Created!" });
+    } catch (error) {
+      res.status(400).json({ error: "Could not create Thought" });
+    }
+  },
 };
 
 module.exports = userControllers;

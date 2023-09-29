@@ -7,7 +7,8 @@ const {
   updateUser,
   deleteUser,
   addFriend,
-  removeFriend
+  removeFriend,
+  createThought
 } = require('../../controllers/userControllers');
 
 const router = express.Router();
@@ -24,6 +25,9 @@ router.route('/:id')
 router.route('/:userId/friends/:friendId')
   .post(addFriend)
   .delete(removeFriend);
+
+// POST a new thought to a user
+router.route("/:userId/thought").post(createThought);
 
 module.exports = router;
 

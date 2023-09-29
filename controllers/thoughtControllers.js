@@ -29,7 +29,7 @@ const thoughtControllers = {
       const newThought = await Thought.create(req.body);
       // Add the created thought's _id to the associated user's thoughts array
       const user = await User.findOneAndUpdate(
-        { _id: req.body.username }, 
+        { _id: req.body._id }, 
         {$push: { thoughts: newThought.id }},
         {new: true}
         );
@@ -42,7 +42,7 @@ const thoughtControllers = {
 
   updateThought: async (req, res) => {
     try {
-      const updatedThought = await Thought.findByIdAndUpdate(
+      const updatedThought = await User.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true }
