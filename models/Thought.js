@@ -32,4 +32,4 @@ const dateFormat = timestamp => {
 
 const Thought = mongoose.model('Thought', thoughtSchema);
 
-module.exports = Thought;
+module.exports = thoughtSchema;

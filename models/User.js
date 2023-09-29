@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const thoughtSchema = require('./Thought')
+
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -19,12 +21,8 @@ const userSchema = new mongoose.Schema({
       message: 'Invalid email format'
     }
   },
-  thoughts: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Thought'
-    }
-  ],
+  thoughts: [thoughtSchema],
+
   friends: [
     {
       type: mongoose.Schema.Types.ObjectId,
