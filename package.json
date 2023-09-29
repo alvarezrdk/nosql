@@ -1,0 +1,29 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "No SQL Social Network API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarezrdk/nosql.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "RDAC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alvarezrdk/nosql/issues"
+  },
+  "homepage": "https://github.com/alvarezrdk/nosql#readme",
+
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.0.2"
+  }
+}

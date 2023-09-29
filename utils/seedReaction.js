@@ -26,7 +26,7 @@ const seedReactions = async () => {
           username: 'username3',
           thoughtId: thought2._id,
         },
-        // Add more reactions as needed
+        
       ];
 
       await Reaction.insertMany(reactions);
