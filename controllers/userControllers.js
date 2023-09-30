@@ -52,9 +52,6 @@ const userControllers = {
       if (!deletedUser) {
         return res.status(404).json({ error: 'User not found' });
       }
-      
-      // Remove the user's associated thoughts
-      await Thought.deleteMany({ username: deletedUser.username });
 
       res.json({ message: 'User and associated thoughts deleted successfully' });
     } catch (error) {
@@ -82,20 +79,6 @@ const userControllers = {
       res.status(400).json({ error: 'Could not add friend' });
     }
    },
-  // addFriend: async (req, res) => {
-  //   try {
-  //     const { userId, friendId } = req.params;
-  //     const user = await User.findByIdAndUpdate(
-  //       { _id: req.params.userId},
-  //       { $addToSet: { friends: friendId } }, { new: true });
-  //     if (!user) {
-  //       return res.status(404).json({ error: 'User not found' });
-  //     }
-  //     res.json(user);
-  //   } catch (error) {
-  //     res.status(400).json({ error: 'Could not add friend' });
-  //   }
-  // },
 
   removeFriend: async (req, res) => {
     try {

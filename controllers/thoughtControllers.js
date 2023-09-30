@@ -72,13 +72,33 @@ const thoughtControllers = {
     }
   },
 
+  // createReaction: async (req, res) => {
+  //   try {
+  //     const thought = await Thought.findOneAndUpdate(
+  //       { _id: req.params.thoughtId },
+  //       { $addToSet: { reactions: req.body } }
+  //     );
+  //         console.log(thought);
+  //     if (!thought) {
+  //       return res.status(404).json({ error: "Thought not found" });
+  //     }
+  //     return res.status(200).json({ message: "Thought Reaction Created!" });
+  //   } catch (error) {
+  //     res.status(400).json({ error: "Could not create reaction" });
+  //   }
+  // },
+
+
   createReaction: async (req, res) => {
     try {
-      const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId },
-        { $addToSet: { reactions: req.body } }
-      );
-
+      const thought = await User.find(
+        { thoughts: {
+          _id: req.params.thoughtId }
+        },
+  //      { $addToSet: { reactions: req.body } }
+      )
+      console.log(req.params.thoughtId);
+      console.log(thought);
       if (!thought) {
         return res.status(404).json({ error: "Thought not found" });
       }

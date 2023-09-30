@@ -22,7 +22,7 @@ router
   .delete(deleteThought);
 
 // POST a new reaction to a thought
-router.route("/:thoughtId/reactions").post(createReaction);
+router.route("/:userId/reactions/:thoughtId").post(createReaction);
 
 // DELETE a reaction by ID
 router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
