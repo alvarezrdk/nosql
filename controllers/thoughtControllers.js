@@ -29,7 +29,7 @@ const thoughtControllers = {
       const newThought = await Thought.create(req.body);
       // Add the created thought's _id to the associated user's thoughts array
       const user = await User.findOneAndUpdate(
-        { _id: req.body.username }, 
+        { _id: req.body._id }, 
         {$push: { thoughts: newThought.id }},
         {new: true}
         );
@@ -42,7 +42,7 @@ const thoughtControllers = {
 
   updateThought: async (req, res) => {
     try {
-      const updatedThought = await Thought.findByIdAndUpdate(
+      const updatedThought = await User.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true }
@@ -72,13 +72,33 @@ const thoughtControllers = {
     }
   },
 
+  // createReaction: async (req, res) => {
+  //   try {
+  //     const thought = await Thought.findOneAndUpdate(
+  //       { _id: req.params.thoughtId },
+  //       { $addToSet: { reactions: req.body } }
+  //     );
+  //         console.log(thought);
+  //     if (!thought) {
+  //       return res.status(404).json({ error: "Thought not found" });
+  //     }
+  //     return res.status(200).json({ message: "Thought Reaction Created!" });
+  //   } catch (error) {
+  //     res.status(400).json({ error: "Could not create reaction" });
+  //   }
+  // },
+
+
   createReaction: async (req, res) => {
     try {
-      const thought = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId },
-        { $addToSet: { reactions: req.body } }
-      );
-
+      const thought = await User.find(
+        { thoughts: {
+          _id: req.params.thoughtId }
+        },
+  //      { $addToSet: { reactions: req.body } }
+      )
+      console.log(req.params.thoughtId);
+      console.log(thought);
       if (!thought) {
         return res.status(404).json({ error: "Thought not found" });
       }
